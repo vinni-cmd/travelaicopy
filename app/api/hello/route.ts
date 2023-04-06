@@ -5,11 +5,13 @@ type Feedback = {
     country: string,
 }
 
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
 const openai = new OpenAIApi(
-  new Configuration({
-    apiKey: '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',
-  })
-)
+  new Configuration(configuration)
+);
 
 export async function POST(request: Request) {
     const data: Feedback = await request.json()
